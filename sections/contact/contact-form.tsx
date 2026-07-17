@@ -229,9 +229,13 @@ export function ContactForm() {
       </div>
 
       <div className="mt-9 flex flex-col items-start gap-5 md:flex-row md:items-center md:justify-between">
-        <p className="text-xs leading-relaxed text-olive">
+        <p className="max-w-xs text-xs leading-relaxed text-olive">
           We&rsquo;ll get back to you for participation and collaboration
-          opportunities.
+          opportunities. By submitting, you agree to our{" "}
+          <Link href="/privacy-policy" className="link-gold text-gold">
+            Privacy Policy
+          </Link>
+          .
         </p>
         <div className="flex gap-3">
           <Button type="reset" variant="ghost" onClick={() => setInterest("")}>

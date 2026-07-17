@@ -139,7 +139,10 @@ export function Footer() {
         <div className="container-edge flex flex-col items-center justify-between gap-4 py-7 text-xs text-olive md:flex-row">
           <p>
             &copy; {new Date().getFullYear()} {site.address.company}. All rights
-            reserved.
+            reserved. &middot;{" "}
+            <Link href="/privacy-policy" className="link-gold">
+              Privacy Policy
+            </Link>
           </p>
           <Waveform className="h-4 w-28 text-olive" />
           <p className="uppercase tracking-[0.28em]">{site.tagline}</p>
