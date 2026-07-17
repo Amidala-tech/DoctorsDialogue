@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* Doctor's Dialogue — luxury editorial palette */
+  --color-ink: #0d0d0f;
+  --color-surface: #17171b;
+  --color-raised: #1f2025;
+  --color-ivory: #f5f0e8;
+  --color-sand: #b9b1a4;
+  --color-gold: #b89a5e;
+  --color-gold-bright: #d8bd88;
+  --color-olive: #6f7257;
+  --color-forest: #1c5c34;
+  --color-line: #2d2b29;
+
+  --font-serif: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  --font-sans: var(--font-inter), "Inter", system-ui, sans-serif;
+
+  --shadow-glow: 0 0 80px 0 rgb(184 154 94 / 0.18);
+  --shadow-card: 0 24px 60px -24px rgb(0 0 0 / 0.65);
+
+  --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+html {
+  scroll-padding-top: 6rem;
+}
+
+body {
+  @apply bg-ink text-sand font-sans antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background-color: rgb(184 154 94 / 0.35);
+  color: var(--color-ivory);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Slim, understated scrollbar */
+@media (pointer: fine) {
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-ink);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-line);
+    border-radius: 8px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-olive);
+  }
+}
+
+@utility container-edge {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 76rem;
+  padding-inline: 1.5rem;
+
+  @media (width >= 48rem) {
+    padding-inline: 2.5rem;
+  }
+}
+
+/* Editorial eyebrow label */
+@utility eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  font-weight: 500;
+}
+
+/* Gold underline sweep for inline links */
+@utility link-gold {
+  position: relative;
+  transition: color 200ms ease;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    height: 1px;
+    width: 100%;
+    background: var(--color-gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 300ms ease;
+  }
+
+  &:hover {
+    color: var(--color-ivory);
+  }
+
+  &:hover::after {
+    transform: scaleX(1);
+  }
+}
+
+/* Fine dotted-grid texture for editorial backdrops */
+@utility texture-grid {
+  background-image: radial-gradient(
+    rgb(245 240 232 / 0.045) 1px,
+    transparent 1px
+  );
+  background-size: 26px 26px;
+}

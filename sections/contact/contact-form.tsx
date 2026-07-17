@@ -1,0 +1,205 @@
+"use client";
+
+import { CheckCircle2, RotateCcw, Send, Youtube } from "lucide-react";
+import Link from "next/link";
+import { useSearchParams } from "next/navigation";
+import { useState } from "react";
+
+import { Button } from "@/components/ui/button";
+import { interestTypes, site } from "@/constants/site";
+
+const inputClasses =
+  "w-full rounded-xl border border-line bg-ink px-5 py-3.5 text-sm text-ivory placeholder:text-olive transition-colors duration-300 focus:border-gold focus:outline-none";
+
+/**
+ * Static-site enquiry form: on submit it opens the visitor's email app with
+ * a fully drafted message to the Doctor's Dialogue team, then shows a
+ * success state. The interest dropdown pre-selects from /contact?type=…
+ */
+export function ContactForm() {
+  const searchParams = useSearchParams();
+  const typeParam = searchParams.get("type") ?? "";
+  const initialType = interestTypes.some((t) => t.value === typeParam)
+    ? typeParam
+    : "";
+
+  const [interest, setInterest] = useState(initialType);
+  const [submitted, setSubmitted] = useState(false);
+
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const interestLabel =
+      interestTypes.find((t) => t.value === data.get("interest"))?.label ??
+      "General Enquiry";
+
+    const subject = `Doctor's Dialogue Enquiry — ${interestLabel}`;
+    const body = [
+      `Name: ${data.get("name")}`,
+      `Email: ${data.get("email")}`,
+      `Phone: ${data.get("phone")}`,
+      `Organization / Clinic: ${data.get("organization") || "—"}`,
+      `Interest: ${interestLabel}`,
+      "",
+      `${data.get("message")}`,
+    ].join("\n");
+
+    window.location.href = `mailto:${site.email}?subject=${encodeURIComponent(
+      subject,
+    )}&body=${encodeURIComponent(body)}`;
+    setSubmitted(true);
+  }
+
+  if (submitted) {
+    return (
+      <div className="flex flex-col items-center rounded-3xl border border-gold/40 bg-surface p-10 text-center md:p-14">
+        <span className="flex size-16 items-center justify-center rounded-full border border-gold/50 text-gold">
+          <CheckCircle2 className="size-8" aria-hidden="true" />
+        </span>
+        <h3 className="mt-6 font-serif text-3xl text-ivory">
+          Your enquiry is on its way
+        </h3>
+        <p className="mt-4 max-w-md leading-relaxed">
+          We&rsquo;ve opened your email app with your message drafted to{" "}
+          <span className="text-gold">{site.email}</span> — just press send.
+          We&rsquo;ll get back to you for participation and collaboration
+          opportunities.
+        </p>
+        <div className="mt-10 flex flex-wrap justify-center gap-4">
+          <Button asChild>
+            <Link href="/">Back to Home</Link>
+          </Button>
+          <Button asChild variant="outline">
+            <a href={site.youtube} target="_blank" rel="noopener noreferrer">
+              <Youtube aria-hidden="true" />
+              Watch on YouTube
+            </a>
+          </Button>
+          <Button variant="ghost" onClick={() => setSubmitted(false)}>
+            <RotateCcw aria-hidden="true" />
+            Send Another Enquiry
+          </Button>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <form
+      onSubmit={handleSubmit}
+      className="rounded-3xl border border-line bg-surface p-8 md:p-12"
+    >
+      <div className="grid gap-6 md:grid-cols-2">
+        <div>
+          <label htmlFor="name" className="eyebrow mb-3 block !text-[0.65rem]">
+            Full Name *
+          </label>
+          <input
+            id="name"
+            name="name"
+            type="text"
+            required
+            autoComplete="name"
+            placeholder="Dr. Full Name"
+            className={inputClasses}
+          />
+        </div>
+        <div>
+          <label htmlFor="email" className="eyebrow mb-3 block !text-[0.65rem]">
+            Email Address *
+          </label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            required
+            autoComplete="email"
+            placeholder="you@example.com"
+            className={inputClasses}
+          />
+        </div>
+        <div>
+          <label htmlFor="phone" className="eyebrow mb-3 block !text-[0.65rem]">
+            Phone Number *
+          </label>
+          <input
+            id="phone"
+            name="phone"
+            type="tel"
+            required
+            autoComplete="tel"
+            placeholder="+91 00000 00000"
+            className={inputClasses}
+          />
+        </div>
+        <div>
+          <label
+            htmlFor="organization"
+            className="eyebrow mb-3 block !text-[0.65rem]"
+          >
+            Organization / Clinic Name
+          </label>
+          <input
+            id="organization"
+            name="organization"
+            type="text"
+            autoComplete="organization"
+            placeholder="Your clinic or hospital"
+            className={inputClasses}
+          />
+        </div>
+        <div className="md:col-span-2">
+          <label htmlFor="interest" className="eyebrow mb-3 block !text-[0.65rem]">
+            Interest Type *
+          </label>
+          <select
+            id="interest"
+            name="interest"
+            required
+            value={interest}
+            onChange={(e) => setInterest(e.target.value)}
+            className={`${inputClasses} appearance-none bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%2216%22 fill=%22none%22 stroke=%22%23b89a5e%22 stroke-width=%221.5%22%3E%3Cpath d=%22m4 6 4 4 4-4%22/%3E%3C/svg%3E')] bg-[position:right_1.25rem_center] bg-no-repeat pr-12`}
+          >
+            <option value="" disabled>
+              Select how you&rsquo;d like to participate
+            </option>
+            {interestTypes.map((type) => (
+              <option key={type.value} value={type.value}>
+                {type.label}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="md:col-span-2">
+          <label htmlFor="message" className="eyebrow mb-3 block !text-[0.65rem]">
+            Message *
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            required
+            rows={5}
+            placeholder="Tell us about your specialty and what you'd like to share…"
+            className={`${inputClasses} resize-y`}
+          />
+        </div>
+      </div>
+
+      <div className="mt-9 flex flex-col items-start gap-5 md:flex-row md:items-center md:justify-between">
+        <p className="text-xs leading-relaxed text-olive">
+          We&rsquo;ll get back to you for participation and collaboration
+          opportunities.
+        </p>
+        <div className="flex gap-3">
+          <Button type="reset" variant="ghost" onClick={() => setInterest("")}>
+            Reset Form
+          </Button>
+          <Button type="submit" size="lg">
+            <Send aria-hidden="true" />
+            Submit Enquiry
+          </Button>
+        </div>
+      </div>
+    </form>
+  );
+}
