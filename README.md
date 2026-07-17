@@ -37,11 +37,13 @@ use these anywhere on or off the site:
 /contact?type=general-feature
 ```
 
-The site is fully static: submitting the form opens the visitor's email app
-with a drafted message to `connect@doctorsdialogue.com`. To collect
-submissions server-side later, wire the form in
-[sections/contact/contact-form.tsx](sections/contact/contact-form.tsx) to a
-service such as Formspree, Basin, or a Next.js route handler.
+Submissions are delivered via [FormSubmit](https://formsubmit.co) straight to
+`connect@doctorsdialogue.com` — no backend needed. **One-time setup:** the
+first submission triggers an activation email from FormSubmit to that inbox;
+click the activation link once and all future enquiries arrive automatically
+(formatted as a table, with the interest type in the subject line). If the
+FormSubmit request ever fails, the form falls back to opening the visitor's
+email app with the message pre-drafted.
 
 ## Updating the "Latest Episode" module
 

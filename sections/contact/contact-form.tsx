@@ -1,6 +1,6 @@
 "use client";
 
-import { CheckCircle2, RotateCcw, Send, Youtube } from "lucide-react";
+import { CheckCircle2, LoaderCircle, RotateCcw, Send, Youtube } from "lucide-react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
@@ -12,9 +12,13 @@ const inputClasses =
   "w-full rounded-xl border border-line bg-ink px-5 py-3.5 text-sm text-ivory placeholder:text-olive transition-colors duration-300 focus:border-gold focus:outline-none";
 
 /**
- * Static-site enquiry form: on submit it opens the visitor's email app with
- * a fully drafted message to the Doctor's Dialogue team, then shows a
- * success state. The interest dropdown pre-selects from /contact?type=…
+ * Enquiry form powered by FormSubmit (https://formsubmit.co): submissions are
+ * delivered straight to the Doctor's Dialogue inbox with no backend. If the
+ * network request fails, it falls back to opening the visitor's email app.
+ * The interest dropdown pre-selects from /contact?type=…
+ *
+ * Note: FormSubmit sends a one-time activation email to the inbox on the
+ * first submission — activate it once and everything flows automatically.
  */
 export function ContactForm() {
   const searchParams = useSearchParams();
@@ -24,46 +28,85 @@ export function ContactForm() {
     : "";
 
   const [interest, setInterest] = useState(initialType);
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "fallback">(
+    "idle",
+  );
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const interestLabel =
       interestTypes.find((t) => t.value === data.get("interest"))?.label ??
       "General Enquiry";
-
     const subject = `Doctor's Dialogue Enquiry — ${interestLabel}`;
-    const body = [
-      `Name: ${data.get("name")}`,
-      `Email: ${data.get("email")}`,
-      `Phone: ${data.get("phone")}`,
-      `Organization / Clinic: ${data.get("organization") || "—"}`,
-      `Interest: ${interestLabel}`,
-      "",
-      `${data.get("message")}`,
-    ].join("\n");
 
-    window.location.href = `mailto:${site.email}?subject=${encodeURIComponent(
-      subject,
-    )}&body=${encodeURIComponent(body)}`;
-    setSubmitted(true);
+    setStatus("sending");
+    try {
+      const res = await fetch(`https://formsubmit.co/ajax/${site.email}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          Name: data.get("name"),
+          Email: data.get("email"),
+          Phone: data.get("phone"),
+          "Organization / Clinic": data.get("organization") || "—",
+          "Interest Type": interestLabel,
+          Message: data.get("message"),
+          _subject: subject,
+          _template: "table",
+          _captcha: "false",
+        }),
+      });
+      if (!res.ok) throw new Error(`FormSubmit responded ${res.status}`);
+      setStatus("sent");
+    } catch {
+      // Network/service failure: draft the enquiry in the visitor's email app.
+      const body = [
+        `Name: ${data.get("name")}`,
+        `Email: ${data.get("email")}`,
+        `Phone: ${data.get("phone")}`,
+        `Organization / Clinic: ${data.get("organization") || "—"}`,
+        `Interest: ${interestLabel}`,
+        "",
+        `${data.get("message")}`,
+      ].join("\n");
+      window.location.href = `mailto:${site.email}?subject=${encodeURIComponent(
+        subject,
+      )}&body=${encodeURIComponent(body)}`;
+      setStatus("fallback");
+    }
   }
 
-  if (submitted) {
+  if (status === "sent" || status === "fallback") {
     return (
       <div className="flex flex-col items-center rounded-3xl border border-gold/40 bg-surface p-10 text-center md:p-14">
         <span className="flex size-16 items-center justify-center rounded-full border border-gold/50 text-gold">
           <CheckCircle2 className="size-8" aria-hidden="true" />
         </span>
         <h3 className="mt-6 font-serif text-3xl text-ivory">
-          Your enquiry is on its way
+          {status === "sent"
+            ? "Your enquiry has been sent"
+            : "Your enquiry is on its way"}
         </h3>
         <p className="mt-4 max-w-md leading-relaxed">
-          We&rsquo;ve opened your email app with your message drafted to{" "}
-          <span className="text-gold">{site.email}</span> — just press send.
-          We&rsquo;ll get back to you for participation and collaboration
-          opportunities.
+          {status === "sent" ? (
+            <>
+              Thank you for reaching out — your message is with the
+              Doctor&rsquo;s Dialogue team at{" "}
+              <span className="text-gold">{site.email}</span>. We&rsquo;ll get
+              back to you for participation and collaboration opportunities.
+            </>
+          ) : (
+            <>
+              We couldn&rsquo;t reach the form service, so we&rsquo;ve opened
+              your email app with your message drafted to{" "}
+              <span className="text-gold">{site.email}</span> — just press
+              send.
+            </>
+          )}
         </p>
         <div className="mt-10 flex flex-wrap justify-center gap-4">
           <Button asChild>
@@ -75,7 +118,7 @@ export function ContactForm() {
               Watch on YouTube
             </a>
           </Button>
-          <Button variant="ghost" onClick={() => setSubmitted(false)}>
+          <Button variant="ghost" onClick={() => setStatus("idle")}>
             <RotateCcw aria-hidden="true" />
             Send Another Enquiry
           </Button>
@@ -194,9 +237,13 @@ export function ContactForm() {
           <Button type="reset" variant="ghost" onClick={() => setInterest("")}>
             Reset Form
           </Button>
-          <Button type="submit" size="lg">
-            <Send aria-hidden="true" />
-            Submit Enquiry
+          <Button type="submit" size="lg" disabled={status === "sending"}>
+            {status === "sending" ? (
+              <LoaderCircle className="animate-spin" aria-hidden="true" />
+            ) : (
+              <Send aria-hidden="true" />
+            )}
+            {status === "sending" ? "Sending…" : "Submit Enquiry"}
           </Button>
         </div>
       </div>
