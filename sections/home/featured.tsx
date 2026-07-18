@@ -9,7 +9,7 @@ export function FeaturedSection() {
   return (
     <section
       id="be-featured"
-      className="scroll-mt-24 border-t border-line/60 py-24 md:py-32"
+      className="scroll-mt-24 border-t border-line bg-white py-24 md:py-32"
     >
       <div className="container-edge">
         <SectionHeading
@@ -24,20 +24,20 @@ export function FeaturedSection() {
             <Reveal key={format.title} delay={0.06 * i}>
               <Link
                 href={format.href}
-                className="group flex items-center gap-6 border-b border-line/70 py-8 transition-colors duration-300 first:border-t hover:bg-surface/60 md:gap-10 md:px-6"
+                className="group flex items-center gap-6 border-b border-line py-8 transition-colors duration-300 first:border-t hover:bg-mist/70 md:gap-10 md:px-6"
               >
-                <span className="font-serif text-2xl text-olive transition-colors duration-300 group-hover:text-gold md:text-3xl">
+                <span className="font-serif text-2xl text-faint transition-colors duration-300 group-hover:text-accent md:text-3xl">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <span className="flex-1">
-                  <span className="block font-serif text-2xl text-ivory transition-transform duration-300 group-hover:translate-x-1 md:text-3xl">
+                  <span className="block font-serif text-2xl text-ink transition-transform duration-300 group-hover:translate-x-1 md:text-3xl">
                     {format.title}
                   </span>
-                  <span className="mt-1.5 block text-sm leading-relaxed text-sand">
+                  <span className="mt-1.5 block text-sm leading-relaxed text-steel">
                     {format.description}
                   </span>
                 </span>
-                <span className="flex size-12 shrink-0 items-center justify-center rounded-full border border-line text-sand transition-all duration-300 group-hover:border-gold group-hover:bg-gold group-hover:text-ink">
+                <span className="flex size-12 shrink-0 items-center justify-center rounded-full border border-line text-steel transition-all duration-300 group-hover:border-accent group-hover:bg-accent group-hover:text-white">
                   <ArrowUpRight className="size-5" aria-hidden="true" />
                 </span>
               </Link>
@@ -46,7 +46,7 @@ export function FeaturedSection() {
         </div>
 
         <Reveal delay={0.2}>
-          <p className="mt-12 text-center font-serif text-2xl italic text-gold">
+          <p className="mt-12 text-center font-serif text-2xl italic text-accent">
             Share your expertise with the world.
           </p>
         </Reveal>

@@ -24,8 +24,8 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section className="border-t border-line/60 py-10 first:border-t-0 first:pt-0">
-      <h2 className="font-serif text-3xl text-ivory">{title}</h2>
+    <section className="border-t border-line py-10 first:border-t-0 first:pt-0">
+      <h2 className="font-serif text-3xl text-ink">{title}</h2>
       <div className="mt-5 space-y-4 leading-relaxed">{children}</div>
     </section>
   );
@@ -34,31 +34,32 @@ function Section({
 export default function PrivacyPolicyPage() {
   return (
     <>
-      <section className="relative overflow-hidden pb-16 pt-40">
+      <section className="relative overflow-hidden bg-hero-navy pb-16 pt-40">
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_0%,rgb(184_154_94/0.1),transparent_65%)]"
+          className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_0%,rgb(77_143_209/0.16),transparent_65%)]"
         />
+        <div aria-hidden="true" className="texture-grid absolute inset-0 opacity-60" />
         <div className="container-edge relative text-center">
           <Reveal>
-            <p className="eyebrow">Your Data, Respected</p>
-            <h1 className="mx-auto mt-6 max-w-3xl font-serif text-5xl font-medium leading-[1.05] text-ivory md:text-6xl">
-              Privacy <span className="italic text-gold">Policy</span>
+            <p className="eyebrow text-azure">Your Data, Respected</p>
+            <h1 className="mx-auto mt-6 max-w-3xl font-serif text-5xl font-medium leading-[1.05] text-white md:text-6xl">
+              Privacy <span className="italic text-azure">Policy</span>
             </h1>
-            <Waveform className="mx-auto mt-8" />
-            <p className="mt-6 text-sm uppercase tracking-[0.22em] text-olive">
+            <Waveform className="mx-auto mt-8 text-azure" />
+            <p className="mt-6 text-sm uppercase tracking-[0.22em] text-white/60">
               Last updated: {lastUpdated}
             </p>
           </Reveal>
         </div>
       </section>
 
-      <div className="container-edge max-w-3xl pb-24">
+      <div className="container-edge max-w-3xl pb-24 pt-14">
         <Reveal>
           <Section title="Who we are">
             <p>
               Doctor&rsquo;s Dialogue is a healthcare communication platform
-              operated by <strong className="text-ivory">{site.address.company}</strong>,{" "}
+              operated by <strong className="text-ink">{site.address.company}</strong>,{" "}
               {site.address.line1}, {site.address.line2} (&ldquo;we&rdquo;,
               &ldquo;us&rdquo;, &ldquo;our&rdquo;). This policy explains how we
               collect, use, and protect personal information when you use this
@@ -72,7 +73,7 @@ export default function PrivacyPolicyPage() {
               When you submit our contact / enquiry form, we collect the
               information you provide:
             </p>
-            <ul className="list-disc space-y-2 pl-6 marker:text-gold">
+            <ul className="list-disc space-y-2 pl-6 marker:text-accent">
               <li>Full name</li>
               <li>Email address</li>
               <li>Phone number</li>
@@ -90,7 +91,7 @@ export default function PrivacyPolicyPage() {
           </Section>
 
           <Section title="How we use your information">
-            <ul className="list-disc space-y-2 pl-6 marker:text-gold">
+            <ul className="list-disc space-y-2 pl-6 marker:text-accent">
               <li>
                 To respond to your enquiry and discuss participation, feature,
                 or collaboration opportunities with Doctor&rsquo;s Dialogue.
@@ -115,7 +116,7 @@ export default function PrivacyPolicyPage() {
                 href="https://formsubmit.co"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="link-gold text-gold"
+                className="link-accent text-accent"
               >
                 FormSubmit
               </a>
@@ -123,7 +124,7 @@ export default function PrivacyPolicyPage() {
               &ldquo;Submit Enquiry&rdquo;, the details you entered are
               transmitted securely (over HTTPS) to FormSubmit, which forwards
               them as an email to our inbox at{" "}
-              <a href={`mailto:${site.email}`} className="link-gold text-gold">
+              <a href={`mailto:${site.email}`} className="link-accent text-accent">
                 {site.email}
               </a>
               . FormSubmit processes this data solely to deliver your message;
@@ -132,7 +133,7 @@ export default function PrivacyPolicyPage() {
                 href="https://formsubmit.co/privacy"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="link-gold text-gold"
+                className="link-accent text-accent"
               >
                 FormSubmit privacy policy
               </a>{" "}
@@ -154,7 +155,7 @@ export default function PrivacyPolicyPage() {
 
           <Section title="Sharing of information">
             <p>We share personal information only with:</p>
-            <ul className="list-disc space-y-2 pl-6 marker:text-gold">
+            <ul className="list-disc space-y-2 pl-6 marker:text-accent">
               <li>
                 Service providers that make this website work (FormSubmit for
                 form delivery, and our website hosting provider), strictly to
@@ -191,7 +192,7 @@ export default function PrivacyPolicyPage() {
               of, or deletion of the personal information you have shared with
               us, or withdraw consent to its further use. To exercise any of
               these rights, contact us at{" "}
-              <a href={`mailto:${site.email}`} className="link-gold text-gold">
+              <a href={`mailto:${site.email}`} className="link-accent text-accent">
                 {site.email}
               </a>{" "}
               or {site.phone}. We will respond within a reasonable timeframe.
@@ -228,12 +229,12 @@ export default function PrivacyPolicyPage() {
               {site.address.line2}
               <br />
               Email:{" "}
-              <a href={`mailto:${site.email}`} className="link-gold text-gold">
+              <a href={`mailto:${site.email}`} className="link-accent text-accent">
                 {site.email}
               </a>
               <br />
               Phone:{" "}
-              <a href={site.phoneHref} className="link-gold text-gold">
+              <a href={site.phoneHref} className="link-accent text-accent">
                 {site.phone}
               </a>
             </p>

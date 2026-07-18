@@ -68,8 +68,8 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0d0d0f",
-  colorScheme: "dark",
+  themeColor: "#0e2a47",
+  colorScheme: "light",
 };
 
 const organizationJsonLd = {
@@ -117,7 +117,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <Navbar />
           <a
             href="#main"
-            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[70] focus:rounded-full focus:bg-gold focus:px-5 focus:py-2 focus:text-ink"
+            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[70] focus:rounded-xl focus:bg-accent focus:px-5 focus:py-2 focus:text-white"
           >
             Skip to content
           </a>

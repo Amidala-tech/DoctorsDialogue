@@ -7,7 +7,7 @@ export function Waveform({ className }: { className?: string }) {
       viewBox="0 0 160 24"
       fill="none"
       aria-hidden="true"
-      className={cn("h-5 w-40 text-gold", className)}
+      className={cn("h-5 w-40 text-accent", className)}
     >
       <path
         d="M0 12h56l5-7 6 14 5-11 4 6 3-2h81"

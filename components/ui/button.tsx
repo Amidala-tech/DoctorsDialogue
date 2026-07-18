@@ -5,14 +5,17 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "group/btn inline-flex items-center justify-center gap-2 rounded-full font-medium tracking-[0.14em] uppercase transition-all duration-300 focus-visible:outline-2 focus-visible:outline-gold focus-visible:outline-offset-4 disabled:pointer-events-none disabled:opacity-50 [&_svg]:size-4 [&_svg]:shrink-0",
+  "group/btn inline-flex items-center justify-center gap-2 rounded-xl font-medium tracking-[0.14em] uppercase transition-all duration-300 focus-visible:outline-2 focus-visible:outline-azure focus-visible:outline-offset-4 disabled:pointer-events-none disabled:opacity-50 [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
-        gold: "bg-gold text-ink shadow-[0_0_0_0_rgb(184_154_94/0)] hover:bg-gold-bright hover:shadow-[0_0_40px_0_rgb(184_154_94/0.35)] hover:-translate-y-0.5",
+        primary:
+          "bg-accent text-white shadow-[0_12px_28px_-14px_rgb(14_42_71/0.5)] hover:bg-accent-deep hover:-translate-y-0.5 hover:shadow-[0_16px_34px_-14px_rgb(14_42_71/0.55)]",
         outline:
-          "border border-line text-ivory hover:border-gold hover:text-gold-bright hover:-translate-y-0.5",
-        ghost: "text-sand hover:text-gold-bright",
+          "border border-accent/50 text-accent hover:border-accent hover:bg-mist hover:-translate-y-0.5",
+        outlineLight:
+          "border border-white/35 text-white hover:border-azure hover:bg-white/10 hover:-translate-y-0.5",
+        ghost: "text-steel hover:text-accent",
       },
       size: {
         sm: "h-10 px-5 text-[0.7rem]",
@@ -21,7 +24,7 @@ const buttonVariants = cva(
       },
     },
     defaultVariants: {
-      variant: "gold",
+      variant: "primary",
       size: "md",
     },
   },

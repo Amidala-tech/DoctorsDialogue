@@ -34,12 +34,16 @@ export function Navbar() {
     };
   }, [open]);
 
+  // Every page opens on a navy hero band, so the transparent state sits on
+  // navy (inverted logo, light links) and the scrolled state on white.
+  const onLight = scrolled || open;
+
   return (
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-500",
-        scrolled || open
-          ? "border-b border-line/70 bg-ink/90 backdrop-blur-md"
+        onLight
+          ? "border-b border-line bg-white/92 shadow-[0_10px_30px_-22px_rgb(14_42_71/0.4)] backdrop-blur-md"
           : "border-b border-transparent bg-transparent",
       )}
     >
@@ -53,12 +57,12 @@ export function Navbar() {
           aria-label="Doctor's Dialogue — Home"
         >
           <Image
-            src="/images/dd-logo-inverted.png"
+            src={onLight ? "/images/dd-logo.png" : "/images/dd-logo-inverted.png"}
             alt="Doctor's Dialogue — Conversations That Heal"
             width={612}
             height={261}
             priority
-            className="h-16 w-auto transition-opacity duration-300 group-hover:opacity-85"
+            className="h-14 w-auto transition-opacity duration-300 group-hover:opacity-85"
           />
         </Link>
 
@@ -68,8 +72,14 @@ export function Navbar() {
               key={link.href}
               href={link.href}
               className={cn(
-                "link-gold text-xs uppercase tracking-[0.22em]",
-                pathname === link.href ? "text-ivory" : "text-sand",
+                "link-accent text-xs uppercase tracking-[0.22em] transition-colors",
+                onLight
+                  ? pathname === link.href
+                    ? "text-accent"
+                    : "text-ink hover:text-accent"
+                  : pathname === link.href
+                    ? "text-white"
+                    : "text-white/75 hover:text-white",
               )}
               aria-current={pathname === link.href ? "page" : undefined}
             >
@@ -90,7 +100,12 @@ export function Navbar() {
           aria-expanded={open}
           aria-controls="mobile-menu"
           aria-label={open ? "Close menu" : "Open menu"}
-          className="flex size-11 items-center justify-center rounded-full border border-line text-ivory transition-colors hover:border-gold lg:hidden"
+          className={cn(
+            "flex size-11 items-center justify-center rounded-xl border transition-colors lg:hidden",
+            onLight
+              ? "border-line text-ink hover:border-accent hover:text-accent"
+              : "border-white/30 text-white hover:border-azure",
+          )}
         >
           {open ? <X className="size-5" /> : <Menu className="size-5" />}
         </button>
@@ -104,7 +119,7 @@ export function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.35, ease: [0.32, 0.72, 0, 1] }}
-            className="overflow-hidden border-t border-line/60 bg-ink/95 backdrop-blur-md lg:hidden"
+            className="overflow-hidden border-t border-line bg-white/98 backdrop-blur-md lg:hidden"
           >
             <div className="container-edge flex flex-col gap-1 py-6">
               {navLinks.map((link) => (
@@ -112,8 +127,8 @@ export function Navbar() {
                   key={link.href}
                   href={link.href}
                   className={cn(
-                    "rounded-lg px-3 py-3.5 font-serif text-2xl transition-colors hover:bg-surface",
-                    pathname === link.href ? "text-gold" : "text-ivory",
+                    "rounded-lg px-3 py-3.5 font-serif text-2xl transition-colors hover:bg-mist",
+                    pathname === link.href ? "text-accent" : "text-ink",
                   )}
                   aria-current={pathname === link.href ? "page" : undefined}
                 >

@@ -64,20 +64,21 @@ const values = [
 export default function AboutPage() {
   return (
     <>
-      {/* Intro hero */}
-      <section className="relative overflow-hidden pb-20 pt-40 md:pb-28">
+      {/* Intro hero — navy band */}
+      <section className="relative overflow-hidden bg-hero-navy pb-20 pt-40 md:pb-28">
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_0%,rgb(184_154_94/0.12),transparent_65%)]"
+          className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_0%,rgb(77_143_209/0.16),transparent_65%)]"
         />
+        <div aria-hidden="true" className="texture-grid absolute inset-0 opacity-60" />
         <div className="container-edge relative text-center">
           <Reveal>
-            <p className="eyebrow">Who We Are</p>
-            <h1 className="mx-auto mt-6 max-w-3xl font-serif text-6xl font-medium leading-[1.02] text-ivory md:text-7xl">
-              About Doctor&rsquo;s <span className="italic text-gold">Dialogue</span>
+            <p className="eyebrow text-azure">Who We Are</p>
+            <h1 className="mx-auto mt-6 max-w-3xl font-serif text-6xl font-medium leading-[1.02] text-white md:text-7xl">
+              About Doctor&rsquo;s <span className="italic text-azure">Dialogue</span>
             </h1>
-            <Waveform className="mx-auto mt-8" />
-            <p className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed">
+            <Waveform className="mx-auto mt-8 text-azure" />
+            <p className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-mist/85">
               A healthcare communication platform built to help doctors share
               trusted knowledge, real experiences, and awareness-driven
               conversations with wider communities.
@@ -86,7 +87,7 @@ export default function AboutPage() {
               <Button asChild size="lg">
                 <Link href="/contact">Contact Us</Link>
               </Button>
-              <Button asChild variant="outline" size="lg">
+              <Button asChild variant="outlineLight" size="lg">
                 <a href={site.youtube} target="_blank" rel="noopener noreferrer">
                   <Youtube aria-hidden="true" />
                   Watch Conversations
@@ -98,7 +99,7 @@ export default function AboutPage() {
       </section>
 
       {/* Brand story */}
-      <section className="border-t border-line/60 py-24 md:py-32">
+      <section className="bg-white py-24 md:py-32">
         <div className="container-edge grid items-center gap-14 lg:grid-cols-2">
           <Reveal>
             <div className="relative overflow-hidden rounded-3xl border border-line shadow-[var(--shadow-card)]">
@@ -112,7 +113,7 @@ export default function AboutPage() {
               />
               <div
                 aria-hidden="true"
-                className="absolute inset-0 bg-gradient-to-t from-ink/50 to-transparent"
+                className="absolute inset-0 bg-gradient-to-t from-navy/40 to-transparent"
               />
             </div>
           </Reveal>
@@ -129,9 +130,9 @@ export default function AboutPage() {
                 educate, and be featured, the brand helps bridge medical
                 expertise and public understanding.
               </p>
-              <div className="mt-10 rounded-2xl border border-line bg-surface p-8">
-                <p className="eyebrow">Our Mission</p>
-                <p className="mt-4 font-serif text-2xl leading-snug text-ivory">
+              <div className="mt-10 rounded-2xl border border-line bg-mist p-8">
+                <p className="eyebrow text-accent">Our Mission</p>
+                <p className="mt-4 font-serif text-2xl leading-snug text-ink">
                   To make healthcare conversations more human, more credible,
                   and more widely accessible — through podcasts, short-form
                   sessions, video conversations, solo talks, and magazine
@@ -155,7 +156,7 @@ export default function AboutPage() {
       </section>
 
       {/* Content ecosystem */}
-      <section className="border-t border-line/60 bg-surface/40 py-24 md:py-32">
+      <section className="border-t border-line bg-mist py-24 md:py-32">
         <div className="container-edge">
           <SectionHeading
             eyebrow="What We Publish"
@@ -165,11 +166,11 @@ export default function AboutPage() {
           <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {ecosystem.map((item, i) => (
               <Reveal key={item.title} delay={0.07 * i}>
-                <div className="group h-full rounded-3xl border border-line bg-raised p-8 transition-all duration-500 hover:-translate-y-1 hover:border-gold/50 hover:shadow-[var(--shadow-glow)]">
-                  <span className="flex size-12 items-center justify-center rounded-full border border-line text-gold transition-colors duration-300 group-hover:border-gold/60">
+                <div className="group h-full rounded-3xl border border-line bg-white p-8 transition-all duration-500 hover:-translate-y-1 hover:border-accent/50 hover:shadow-[var(--shadow-glow)]">
+                  <span className="flex size-12 items-center justify-center rounded-full bg-mist text-accent transition-colors duration-300 group-hover:bg-accent group-hover:text-white">
                     <item.icon className="size-5" aria-hidden="true" />
                   </span>
-                  <h3 className="mt-6 font-serif text-2xl text-ivory">
+                  <h3 className="mt-6 font-serif text-2xl text-ink">
                     {item.title}
                   </h3>
                   <p className="mt-3 text-sm leading-relaxed">{item.description}</p>
@@ -177,8 +178,8 @@ export default function AboutPage() {
               </Reveal>
             ))}
             <Reveal delay={0.35}>
-              <div className="flex h-full flex-col justify-between rounded-3xl border border-gold/40 bg-[radial-gradient(ellipse_at_top_left,rgb(184_154_94/0.16),transparent_70%)] p-8">
-                <p className="font-serif text-2xl italic leading-snug text-gold">
+              <div className="flex h-full flex-col justify-between rounded-3xl bg-flagship p-8 shadow-[var(--shadow-card)]">
+                <p className="font-serif text-2xl italic leading-snug text-white">
                   &ldquo;Your knowledge. Your voice. Your impact.&rdquo;
                 </p>
                 <Button asChild className="mt-8 w-fit">
@@ -191,7 +192,7 @@ export default function AboutPage() {
       </section>
 
       {/* How doctors participate */}
-      <section id="content-formats" className="scroll-mt-24 border-t border-line/60 py-24 md:py-32">
+      <section id="content-formats" className="scroll-mt-24 border-t border-line bg-white py-24 md:py-32">
         <div className="container-edge grid gap-14 lg:grid-cols-[0.9fr_1.1fr]">
           <div>
             <SectionHeading
@@ -208,21 +209,21 @@ export default function AboutPage() {
               </Button>
             </Reveal>
           </div>
-          <div className="relative border-l border-line/70 pl-10">
+          <div className="relative border-l border-line pl-10">
             {formats.map((format, i) => (
               <Reveal key={format.title} delay={0.08 * i}>
                 <div className="group relative pb-12 last:pb-0">
                   <span
                     aria-hidden="true"
-                    className="absolute -left-[45px] top-1.5 size-2.5 rounded-full border border-gold bg-ink transition-colors duration-300 group-hover:bg-gold"
+                    className="absolute -left-[45px] top-1.5 size-2.5 rounded-full border border-accent bg-white transition-colors duration-300 group-hover:bg-accent"
                   />
-                  <h3 className="font-serif text-2xl text-ivory">{format.title}</h3>
+                  <h3 className="font-serif text-2xl text-ink">{format.title}</h3>
                   <p className="mt-2 max-w-md text-sm leading-relaxed">
                     {format.description}
                   </p>
                   <Link
                     href={format.href}
-                    className="link-gold mt-3 inline-block text-[0.7rem] uppercase tracking-[0.22em] text-gold"
+                    className="link-accent mt-3 inline-block text-[0.7rem] uppercase tracking-[0.22em] text-accent"
                   >
                     Apply for this format
                   </Link>
@@ -234,7 +235,7 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="border-t border-line/60 bg-surface/40 py-24 md:py-32">
+      <section className="border-t border-line bg-mist py-24 md:py-32">
         <div className="container-edge text-center">
           <SectionHeading eyebrow="What Guides Us" title="Brand Values" align="center" />
           <Reveal delay={0.1}>
@@ -242,7 +243,7 @@ export default function AboutPage() {
               {values.map((value) => (
                 <li
                   key={value}
-                  className="rounded-full border border-line px-8 py-3.5 font-serif text-xl text-ivory transition-all duration-300 hover:-translate-y-0.5 hover:border-gold/60 hover:text-gold-bright"
+                  className="rounded-full border border-line bg-white px-8 py-3.5 font-serif text-xl text-ink transition-all duration-300 hover:-translate-y-0.5 hover:border-accent hover:text-accent"
                 >
                   {value}
                 </li>
@@ -253,17 +254,17 @@ export default function AboutPage() {
       </section>
 
       {/* Closing statement */}
-      <section className="relative overflow-hidden py-24 md:py-32">
+      <section className="relative overflow-hidden bg-white py-24 md:py-32">
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-[radial-gradient(ellipse_50%_60%_at_50%_100%,rgb(184_154_94/0.14),transparent_70%)]"
+          className="absolute inset-0 bg-[radial-gradient(ellipse_50%_60%_at_50%_100%,rgb(46_111_174/0.08),transparent_70%)]"
         />
         <div className="container-edge relative text-center">
           <Reveal>
-            <p className="mx-auto max-w-3xl font-serif text-4xl font-medium leading-[1.15] text-ivory md:text-5xl">
+            <p className="mx-auto max-w-3xl font-serif text-4xl font-medium leading-[1.15] text-ink md:text-5xl">
               Every conversation has the power to inform, reassure, and create
               meaningful public health awareness.{" "}
-              <span className="italic text-gold">
+              <span className="italic text-accent">
                 Doctor&rsquo;s Dialogue exists to make those conversations
                 visible.
               </span>

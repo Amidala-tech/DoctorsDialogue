@@ -15,7 +15,7 @@ const featuredLinks = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-line/70 bg-surface">
+    <footer className="bg-deep text-white/70">
       <div className="container-edge grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
         <div>
           <Image
@@ -29,17 +29,15 @@ export function Footer() {
             A complete healthcare communication platform bringing doctors and
             communities together.
           </p>
-          <p className="mt-4 text-xs uppercase tracking-[0.28em] text-gold">
-            {site.motto}
-          </p>
+          <p className="eyebrow mt-4 text-[0.7rem] text-azure">{site.motto}</p>
         </div>
 
         <nav aria-label="Footer navigation">
-          <h3 className="eyebrow">Explore</h3>
+          <h3 className="eyebrow text-azure">Explore</h3>
           <ul className="mt-5 space-y-3 text-sm">
             {navLinks.map((link) => (
               <li key={link.href}>
-                <Link href={link.href} className="link-gold">
+                <Link href={link.href} className="link-accent hover:text-white">
                   {link.label}
                 </Link>
               </li>
@@ -49,7 +47,7 @@ export function Footer() {
                 href={site.youtube}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="link-gold"
+                className="link-accent hover:text-white"
               >
                 YouTube
               </a>
@@ -59,7 +57,7 @@ export function Footer() {
                 href={site.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="link-gold"
+                className="link-accent hover:text-white"
               >
                 Facebook
               </a>
@@ -68,11 +66,11 @@ export function Footer() {
         </nav>
 
         <nav aria-label="Get featured">
-          <h3 className="eyebrow">Get Featured</h3>
+          <h3 className="eyebrow text-azure">Get Featured</h3>
           <ul className="mt-5 space-y-3 text-sm">
             {featuredLinks.map((link) => (
               <li key={link.href}>
-                <Link href={link.href} className="link-gold">
+                <Link href={link.href} className="link-accent hover:text-white">
                   {link.label}
                 </Link>
               </li>
@@ -81,28 +79,28 @@ export function Footer() {
         </nav>
 
         <div>
-          <h3 className="eyebrow">Contact</h3>
+          <h3 className="eyebrow text-azure">Contact</h3>
           <ul className="mt-5 space-y-4 text-sm">
             <li>
               <a
                 href={`mailto:${site.email}`}
-                className="link-gold inline-flex items-center gap-2.5"
+                className="link-accent inline-flex items-center gap-2.5 hover:text-white"
               >
-                <Mail className="size-4 shrink-0 text-gold" aria-hidden="true" />
+                <Mail className="size-4 shrink-0 text-azure" aria-hidden="true" />
                 {site.email}
               </a>
             </li>
             <li>
               <a
                 href={site.phoneHref}
-                className="link-gold inline-flex items-center gap-2.5"
+                className="link-accent inline-flex items-center gap-2.5 hover:text-white"
               >
-                <Phone className="size-4 shrink-0 text-gold" aria-hidden="true" />
+                <Phone className="size-4 shrink-0 text-azure" aria-hidden="true" />
                 {site.phone}
               </a>
             </li>
             <li className="flex items-start gap-2.5">
-              <MapPin className="mt-0.5 size-4 shrink-0 text-gold" aria-hidden="true" />
+              <MapPin className="mt-0.5 size-4 shrink-0 text-azure" aria-hidden="true" />
               <span>
                 {site.address.company}
                 <br />
@@ -118,7 +116,7 @@ export function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Doctor's Dialogue on YouTube"
-              className="flex size-10 items-center justify-center rounded-full border border-line text-sand transition-colors hover:border-gold hover:text-gold-bright"
+              className="flex size-10 items-center justify-center rounded-xl border border-white/20 text-white/70 transition-colors hover:border-azure hover:text-azure"
             >
               <Youtube className="size-4" aria-hidden="true" />
             </a>
@@ -127,7 +125,7 @@ export function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Doctor's Dialogue on Facebook"
-              className="flex size-10 items-center justify-center rounded-full border border-line text-sand transition-colors hover:border-gold hover:text-gold-bright"
+              className="flex size-10 items-center justify-center rounded-xl border border-white/20 text-white/70 transition-colors hover:border-azure hover:text-azure"
             >
               <Facebook className="size-4" aria-hidden="true" />
             </a>
@@ -135,16 +133,16 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-line/60">
-        <div className="container-edge flex flex-col items-center justify-between gap-4 py-7 text-xs text-olive md:flex-row">
+      <div className="border-t border-white/10">
+        <div className="container-edge flex flex-col items-center justify-between gap-4 py-7 text-xs text-white/45 md:flex-row">
           <p>
             &copy; {new Date().getFullYear()} {site.address.company}. All rights
             reserved. &middot;{" "}
-            <Link href="/privacy-policy" className="link-gold">
+            <Link href="/privacy-policy" className="link-accent hover:text-white">
               Privacy Policy
             </Link>
           </p>
-          <Waveform className="h-4 w-28 text-olive" />
+          <Waveform className="h-4 w-28 text-azure/60" />
           <p className="uppercase tracking-[0.28em]">{site.tagline}</p>
         </div>
       </div>

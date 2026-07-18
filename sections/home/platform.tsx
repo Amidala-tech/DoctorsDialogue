@@ -40,7 +40,7 @@ export function PlatformSection() {
   return (
     <section
       id="platform-overview"
-      className="relative scroll-mt-24 border-t border-line/60 bg-surface/40 py-24 md:py-32"
+      className="relative scroll-mt-24 border-t border-line bg-white py-24 md:py-32"
     >
       <div className="container-edge">
         <SectionHeading
@@ -54,7 +54,7 @@ export function PlatformSection() {
           <Reveal className="lg:col-span-2 lg:row-span-2">
             <Link
               href="/contact?type=podcast"
-              className="group relative flex h-full min-h-[24rem] flex-col justify-end overflow-hidden rounded-3xl border border-line transition-all duration-500 hover:border-gold/50 hover:shadow-[var(--shadow-glow)]"
+              className="group relative flex h-full min-h-[24rem] flex-col justify-end overflow-hidden rounded-3xl border border-line shadow-[var(--shadow-card)] transition-all duration-500 hover:border-accent/50 hover:shadow-[var(--shadow-glow)]"
             >
               <Image
                 src="/images/dd-card-podcast.jpg"
@@ -65,20 +65,20 @@ export function PlatformSection() {
               />
               <div
                 aria-hidden="true"
-                className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-transparent"
+                className="absolute inset-0 bg-gradient-to-t from-navy via-navy/45 to-transparent"
               />
               <div className="relative p-8 md:p-12">
-                <span className="flex size-12 items-center justify-center rounded-full border border-gold/50 bg-ink/70 text-gold backdrop-blur">
+                <span className="flex size-12 items-center justify-center rounded-full border border-azure/50 bg-navy/70 text-azure backdrop-blur">
                   <Mic className="size-5" aria-hidden="true" />
                 </span>
-                <h3 className="mt-6 font-serif text-4xl text-ivory md:text-5xl">
+                <h3 className="mt-6 font-serif text-4xl text-white md:text-5xl">
                   Doctor Podcasts
                 </h3>
-                <p className="mt-4 max-w-md leading-relaxed text-sand">
+                <p className="mt-4 max-w-md leading-relaxed text-mist/85">
                   In-depth conversations on specialties, experiences, and the
                   health topics that matter most to your community.
                 </p>
-                <span className="link-gold mt-6 inline-flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-gold">
+                <span className="link-accent mt-6 inline-flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-azure">
                   Explore Doctor Podcasts
                   <ArrowUpRight
                     className="size-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
@@ -93,16 +93,16 @@ export function PlatformSection() {
             <Reveal key={card.title} delay={0.08 * (i + 1)}>
               <Link
                 href={card.href}
-                className="group flex h-full flex-col rounded-3xl border border-line bg-raised p-8 transition-all duration-500 hover:-translate-y-1 hover:border-gold/50 hover:shadow-[var(--shadow-glow)]"
+                className="group flex h-full flex-col rounded-3xl border border-line bg-white p-8 shadow-[0_10px_30px_-24px_rgb(14_42_71/0.25)] transition-all duration-500 hover:-translate-y-1 hover:border-accent/50 hover:shadow-[var(--shadow-glow)]"
               >
-                <span className="flex size-12 items-center justify-center rounded-full border border-line text-gold transition-colors duration-300 group-hover:border-gold/60">
+                <span className="flex size-12 items-center justify-center rounded-full bg-mist text-accent transition-colors duration-300 group-hover:bg-accent group-hover:text-white">
                   <card.icon className="size-5" aria-hidden="true" />
                 </span>
-                <h3 className="mt-6 font-serif text-2xl text-ivory">{card.title}</h3>
+                <h3 className="mt-6 font-serif text-2xl text-ink">{card.title}</h3>
                 <p className="mt-3 flex-1 text-sm leading-relaxed">
                   {card.description}
                 </p>
-                <span className="link-gold mt-6 inline-flex items-center gap-2 text-[0.7rem] uppercase tracking-[0.22em] text-gold">
+                <span className="link-accent mt-6 inline-flex items-center gap-2 text-[0.7rem] uppercase tracking-[0.22em] text-accent">
                   {card.cta}
                   <ArrowUpRight
                     className="size-3.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
@@ -116,7 +116,7 @@ export function PlatformSection() {
           <Reveal delay={0.32} className="lg:col-span-3">
             <Link
               href="/contact?type=magazine"
-              className="group relative flex min-h-[16rem] flex-col justify-end overflow-hidden rounded-3xl border border-line transition-all duration-500 hover:border-gold/50 hover:shadow-[var(--shadow-glow)] md:min-h-[18rem]"
+              className="group relative flex min-h-[16rem] flex-col justify-end overflow-hidden rounded-3xl border border-line shadow-[var(--shadow-card)] transition-all duration-500 hover:border-accent/50 hover:shadow-[var(--shadow-glow)] md:min-h-[18rem]"
             >
               <Image
                 src="/images/dd-card-magazine.jpg"
@@ -127,20 +127,20 @@ export function PlatformSection() {
               />
               <div
                 aria-hidden="true"
-                className="absolute inset-0 bg-gradient-to-r from-ink via-ink/60 to-transparent"
+                className="absolute inset-0 bg-gradient-to-r from-navy via-navy/65 to-transparent"
               />
               <div className="relative max-w-lg p-8 md:p-12">
-                <span className="flex size-12 items-center justify-center rounded-full border border-gold/50 bg-ink/70 text-gold backdrop-blur">
+                <span className="flex size-12 items-center justify-center rounded-full border border-azure/50 bg-navy/70 text-azure backdrop-blur">
                   <BookOpen className="size-5" aria-hidden="true" />
                 </span>
-                <h3 className="mt-5 font-serif text-3xl text-ivory md:text-4xl">
+                <h3 className="mt-5 font-serif text-3xl text-white md:text-4xl">
                   Monthly Healthcare Magazine
                 </h3>
-                <p className="mt-3 leading-relaxed text-sand">
+                <p className="mt-3 leading-relaxed text-mist/85">
                   Digital and print features that extend doctor voices beyond
                   video — healthcare journalism with an editorial finish.
                 </p>
-                <span className="link-gold mt-5 inline-flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-gold">
+                <span className="link-accent mt-5 inline-flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-azure">
                   Magazine Feature
                   <ArrowUpRight
                     className="size-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"

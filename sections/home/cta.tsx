@@ -8,10 +8,10 @@ import { site } from "@/constants/site";
 
 export function SocialStrip() {
   return (
-    <section className="border-t border-line/60 py-16">
+    <section className="border-t border-line bg-white py-16">
       <div className="container-edge flex flex-col items-center justify-between gap-8 md:flex-row">
         <Reveal>
-          <p className="max-w-sm text-center font-serif text-2xl text-ivory md:text-left">
+          <p className="max-w-sm text-center font-serif text-2xl text-ink md:text-left">
             Follow the conversation across our digital platforms.
           </p>
         </Reveal>
@@ -38,19 +38,19 @@ export function SocialStrip() {
 
 export function FinalCta() {
   return (
-    <section className="relative overflow-hidden border-t border-line/60 py-24 md:py-32">
+    <section className="relative overflow-hidden bg-hero-navy py-24 md:py-32">
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-[radial-gradient(ellipse_50%_60%_at_50%_100%,rgb(184_154_94/0.16),transparent_70%)]"
+        className="absolute inset-0 bg-[radial-gradient(ellipse_50%_60%_at_50%_100%,rgb(77_143_209/0.16),transparent_70%)]"
       />
       <div className="container-edge relative flex flex-col items-center text-center">
         <Reveal>
-          <Waveform className="mx-auto" />
-          <h2 className="mx-auto mt-8 max-w-3xl font-serif text-5xl font-medium leading-[1.05] text-ivory md:text-6xl">
+          <Waveform className="mx-auto text-azure" />
+          <h2 className="mx-auto mt-8 max-w-3xl font-serif text-5xl font-medium leading-[1.05] text-white md:text-6xl">
             Bring Your Voice to the{" "}
-            <span className="italic text-gold">Healthcare Movement</span>
+            <span className="italic text-azure">Healthcare Movement</span>
           </h2>
-          <p className="mx-auto mt-6 max-w-xl leading-relaxed">
+          <p className="mx-auto mt-6 max-w-xl leading-relaxed text-mist/85">
             Join Doctor&rsquo;s Dialogue to share expertise, build trust, and
             connect with audiences through meaningful health communication.
           </p>
@@ -58,7 +58,7 @@ export function FinalCta() {
             <Button asChild size="lg">
               <Link href="/contact">Contact Us</Link>
             </Button>
-            <Button asChild variant="outline" size="lg">
+            <Button asChild variant="outlineLight" size="lg">
               <a href={site.youtube} target="_blank" rel="noopener noreferrer">
                 <Youtube aria-hidden="true" />
                 Visit YouTube

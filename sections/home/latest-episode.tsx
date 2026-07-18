@@ -28,7 +28,7 @@ export function LatestEpisodeSection() {
         </div>
 
         <Reveal delay={0.1} className="mt-14">
-          <article className="group relative overflow-hidden rounded-3xl border border-line bg-surface shadow-[var(--shadow-card)] transition-all duration-500 hover:border-gold/40 hover:shadow-[var(--shadow-glow)]">
+          <article className="group relative overflow-hidden rounded-3xl border border-line bg-white shadow-[var(--shadow-card)] transition-all duration-500 hover:border-accent/40 hover:shadow-[var(--shadow-glow)]">
             <div className="grid lg:grid-cols-[1.35fr_1fr]">
               <a
                 href={latestEpisode.videoUrl}
@@ -46,28 +46,28 @@ export function LatestEpisodeSection() {
                 />
                 <div
                   aria-hidden="true"
-                  className="absolute inset-0 bg-gradient-to-tr from-ink/60 via-transparent to-transparent"
+                  className="absolute inset-0 bg-gradient-to-tr from-navy/55 via-transparent to-transparent"
                 />
-                <span className="absolute inset-0 m-auto flex size-20 items-center justify-center rounded-full border border-ivory/30 bg-ink/60 text-ivory backdrop-blur transition-all duration-300 group-hover:scale-110 group-hover:border-gold group-hover:bg-gold group-hover:text-ink">
+                <span className="absolute inset-0 m-auto flex size-20 items-center justify-center rounded-full border border-white/40 bg-navy/50 text-white backdrop-blur transition-all duration-300 group-hover:scale-110 group-hover:border-accent group-hover:bg-accent">
                   <Play className="ml-1 size-7 fill-current" aria-hidden="true" />
                 </span>
               </a>
 
               <div className="flex flex-col justify-center gap-6 p-8 md:p-12">
-                <span className="inline-flex w-fit items-center rounded-full border border-gold/40 px-4 py-1.5 text-[0.65rem] uppercase tracking-[0.26em] text-gold">
+                <span className="inline-flex w-fit items-center rounded-full bg-mist px-4 py-1.5 text-[0.65rem] uppercase tracking-[0.26em] text-accent">
                   Latest Episode
                 </span>
-                <h3 className="font-serif text-3xl leading-snug text-ivory md:text-4xl">
+                <h3 className="font-serif text-3xl leading-snug text-ink md:text-4xl">
                   {latestEpisode.videoTitle}
                 </h3>
                 <p className="leading-relaxed">{latestEpisode.summary}</p>
-                <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs uppercase tracking-[0.18em] text-olive">
+                <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs uppercase tracking-[0.18em] text-faint">
                   <span className="inline-flex items-center gap-2">
-                    <CalendarDays className="size-3.5 text-gold" aria-hidden="true" />
+                    <CalendarDays className="size-3.5 text-accent" aria-hidden="true" />
                     {latestEpisode.publishedDate}
                   </span>
                   <span className="inline-flex items-center gap-2">
-                    <Clock3 className="size-3.5 text-gold" aria-hidden="true" />
+                    <Clock3 className="size-3.5 text-accent" aria-hidden="true" />
                     {latestEpisode.duration}
                   </span>
                 </div>
@@ -93,7 +93,7 @@ export function LatestEpisodeSection() {
             </div>
             <span
               aria-hidden="true"
-              className="absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0 bg-gold transition-transform duration-700 group-hover:scale-x-100"
+              className="absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0 bg-azure transition-transform duration-700 group-hover:scale-x-100"
             />
           </article>
         </Reveal>

@@ -4,7 +4,7 @@ import { AnimatePresence, motion, useScroll, useSpring } from "framer-motion";
 import { ArrowUp } from "lucide-react";
 import { useEffect, useState } from "react";
 
-/** Thin gold reading-progress bar pinned to the top edge. */
+/** Thin accent reading-progress bar pinned to the top edge. */
 export function ScrollProgress() {
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
@@ -17,7 +17,7 @@ export function ScrollProgress() {
     <motion.div
       aria-hidden="true"
       style={{ scaleX }}
-      className="fixed inset-x-0 top-0 z-[60] h-px origin-left bg-gold"
+      className="fixed inset-x-0 top-0 z-[60] h-px origin-left bg-azure"
     />
   );
 }
@@ -42,7 +42,7 @@ export function ScrollToTop() {
           exit={{ opacity: 0, y: 12 }}
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           aria-label="Scroll back to top"
-          className="fixed bottom-6 right-6 z-50 flex size-11 items-center justify-center rounded-full border border-line bg-surface/90 text-ivory backdrop-blur transition-colors hover:border-gold hover:text-gold-bright"
+          className="fixed bottom-6 right-6 z-50 flex size-11 items-center justify-center rounded-xl border border-line bg-white/90 text-ink shadow-[var(--shadow-card)] backdrop-blur transition-colors hover:border-accent hover:text-accent"
         >
           <ArrowUp className="size-4" aria-hidden="true" />
         </motion.button>

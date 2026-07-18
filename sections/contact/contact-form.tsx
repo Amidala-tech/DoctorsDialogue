@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { interestTypes, site } from "@/constants/site";
 
 const inputClasses =
-  "w-full rounded-xl border border-line bg-ink px-5 py-3.5 text-sm text-ivory placeholder:text-olive transition-colors duration-300 focus:border-gold focus:outline-none";
+  "w-full rounded-xl border border-line bg-white px-5 py-3.5 text-sm text-ink placeholder:text-faint transition-colors duration-300 focus:border-accent focus:shadow-[0_0_0_3px_rgb(77_143_209/0.18)] focus:outline-none";
 
 /**
  * Enquiry form powered by FormSubmit (https://formsubmit.co): submissions are
@@ -82,11 +82,11 @@ export function ContactForm() {
 
   if (status === "sent" || status === "fallback") {
     return (
-      <div className="flex flex-col items-center rounded-3xl border border-gold/40 bg-surface p-10 text-center md:p-14">
-        <span className="flex size-16 items-center justify-center rounded-full border border-gold/50 text-gold">
+      <div className="flex flex-col items-center rounded-3xl border border-accent/40 bg-white p-10 text-center shadow-[var(--shadow-card)] md:p-14">
+        <span className="flex size-16 items-center justify-center rounded-full bg-mist text-accent">
           <CheckCircle2 className="size-8" aria-hidden="true" />
         </span>
-        <h3 className="mt-6 font-serif text-3xl text-ivory">
+        <h3 className="mt-6 font-serif text-3xl text-ink">
           {status === "sent"
             ? "Your enquiry has been sent"
             : "Your enquiry is on its way"}
@@ -96,14 +96,14 @@ export function ContactForm() {
             <>
               Thank you for reaching out — your message is with the
               Doctor&rsquo;s Dialogue team at{" "}
-              <span className="text-gold">{site.email}</span>. We&rsquo;ll get
+              <span className="text-accent">{site.email}</span>. We&rsquo;ll get
               back to you for participation and collaboration opportunities.
             </>
           ) : (
             <>
               We couldn&rsquo;t reach the form service, so we&rsquo;ve opened
               your email app with your message drafted to{" "}
-              <span className="text-gold">{site.email}</span> — just press
+              <span className="text-accent">{site.email}</span> — just press
               send.
             </>
           )}
@@ -130,11 +130,11 @@ export function ContactForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="rounded-3xl border border-line bg-surface p-8 md:p-12"
+      className="rounded-3xl border border-line bg-white p-8 shadow-[var(--shadow-card)] md:p-12"
     >
       <div className="grid gap-6 md:grid-cols-2">
         <div>
-          <label htmlFor="name" className="eyebrow mb-3 block !text-[0.65rem]">
+          <label htmlFor="name" className="eyebrow mb-3 block !text-[0.65rem] text-ink">
             Full Name *
           </label>
           <input
@@ -148,7 +148,7 @@ export function ContactForm() {
           />
         </div>
         <div>
-          <label htmlFor="email" className="eyebrow mb-3 block !text-[0.65rem]">
+          <label htmlFor="email" className="eyebrow mb-3 block !text-[0.65rem] text-ink">
             Email Address *
           </label>
           <input
@@ -162,7 +162,7 @@ export function ContactForm() {
           />
         </div>
         <div>
-          <label htmlFor="phone" className="eyebrow mb-3 block !text-[0.65rem]">
+          <label htmlFor="phone" className="eyebrow mb-3 block !text-[0.65rem] text-ink">
             Phone Number *
           </label>
           <input
@@ -178,7 +178,7 @@ export function ContactForm() {
         <div>
           <label
             htmlFor="organization"
-            className="eyebrow mb-3 block !text-[0.65rem]"
+            className="eyebrow mb-3 block !text-[0.65rem] text-ink"
           >
             Organization / Clinic Name
           </label>
@@ -192,7 +192,7 @@ export function ContactForm() {
           />
         </div>
         <div className="md:col-span-2">
-          <label htmlFor="interest" className="eyebrow mb-3 block !text-[0.65rem]">
+          <label htmlFor="interest" className="eyebrow mb-3 block !text-[0.65rem] text-ink">
             Interest Type *
           </label>
           <select
@@ -201,7 +201,7 @@ export function ContactForm() {
             required
             value={interest}
             onChange={(e) => setInterest(e.target.value)}
-            className={`${inputClasses} appearance-none bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%2216%22 fill=%22none%22 stroke=%22%23b89a5e%22 stroke-width=%221.5%22%3E%3Cpath d=%22m4 6 4 4 4-4%22/%3E%3C/svg%3E')] bg-[position:right_1.25rem_center] bg-no-repeat pr-12`}
+            className={`${inputClasses} appearance-none bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%2216%22 fill=%22none%22 stroke=%22%232e6fae%22 stroke-width=%221.5%22%3E%3Cpath d=%22m4 6 4 4 4-4%22/%3E%3C/svg%3E')] bg-[position:right_1.25rem_center] bg-no-repeat pr-12`}
           >
             <option value="" disabled>
               Select how you&rsquo;d like to participate
@@ -214,7 +214,7 @@ export function ContactForm() {
           </select>
         </div>
         <div className="md:col-span-2">
-          <label htmlFor="message" className="eyebrow mb-3 block !text-[0.65rem]">
+          <label htmlFor="message" className="eyebrow mb-3 block !text-[0.65rem] text-ink">
             Message *
           </label>
           <textarea
@@ -229,10 +229,10 @@ export function ContactForm() {
       </div>
 
       <div className="mt-9 flex flex-col items-start gap-5 md:flex-row md:items-center md:justify-between">
-        <p className="max-w-xs text-xs leading-relaxed text-olive">
+        <p className="max-w-xs text-xs leading-relaxed text-faint">
           We&rsquo;ll get back to you for participation and collaboration
           opportunities. By submitting, you agree to our{" "}
-          <Link href="/privacy-policy" className="link-gold text-gold">
+          <Link href="/privacy-policy" className="link-accent text-accent">
             Privacy Policy
           </Link>
           .

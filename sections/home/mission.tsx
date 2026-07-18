@@ -1,5 +1,4 @@
 import { ArrowRight } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 
 import { Reveal } from "@/components/reveal";
@@ -16,28 +15,20 @@ const missionPoints = [
 
 export function MissionSection() {
   return (
-    <section className="relative overflow-hidden py-24 md:py-32">
-      <Image
-        src="/images/dd-mission-abstract.jpg"
-        alt=""
-        aria-hidden="true"
-        fill
-        sizes="100vw"
-        className="object-cover opacity-25"
-      />
+    <section className="relative overflow-hidden bg-mist py-24 md:py-32">
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-b from-ink via-ink/70 to-ink"
+        className="absolute inset-0 bg-[radial-gradient(ellipse_60%_55%_at_80%_10%,rgb(46_111_174/0.08),transparent_65%)]"
       />
 
       <div className="container-edge relative grid items-center gap-16 lg:grid-cols-[1.15fr_0.85fr]">
         <Reveal>
-          <p className="eyebrow">More Than Treatment</p>
-          <blockquote className="mt-8 font-serif text-4xl font-medium leading-[1.15] text-ivory md:text-5xl">
+          <p className="eyebrow text-accent">More Than Treatment</p>
+          <blockquote className="mt-8 font-serif text-4xl font-medium leading-[1.15] text-ink md:text-5xl">
             &ldquo;Healthcare is not only about treatment. It is also about{" "}
-            <span className="italic text-gold">education</span>,{" "}
-            <span className="italic text-gold">awareness</span>, and{" "}
-            <span className="italic text-gold">communication</span>.&rdquo;
+            <span className="italic text-accent">education</span>,{" "}
+            <span className="italic text-accent">awareness</span>, and{" "}
+            <span className="italic text-accent">communication</span>.&rdquo;
           </blockquote>
           <Waveform className="mt-10" />
           <p className="mt-8 max-w-lg leading-relaxed">
@@ -57,14 +48,14 @@ export function MissionSection() {
           </div>
         </Reveal>
 
-        <div className="flex flex-col divide-y divide-line/70 border-y border-line/70">
+        <div className="flex flex-col divide-y divide-line border-y border-line">
           {missionPoints.map((point, i) => (
             <Reveal key={point} delay={0.08 * i}>
               <div className="group flex items-center gap-6 py-6">
-                <span className="font-serif text-xl text-olive transition-colors duration-300 group-hover:text-gold">
+                <span className="font-serif text-xl text-faint transition-colors duration-300 group-hover:text-accent">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <span className="font-serif text-2xl text-ivory transition-transform duration-300 group-hover:translate-x-1.5">
+                <span className="font-serif text-2xl text-ink transition-transform duration-300 group-hover:translate-x-1.5">
                   {point}
                 </span>
               </div>
