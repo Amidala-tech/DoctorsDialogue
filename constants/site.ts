@@ -6,9 +6,9 @@ export const site = {
     "Doctor's Dialogue is a premium healthcare podcast and communication platform where doctors share trusted knowledge, awareness-led insights, and meaningful conversations with the public.",
   url: "https://doctorsdialogue.com",
   email: "connect@doctorsdialogue.com",
-  phone: "+91 73402 6655",
-  phoneHref: "tel:+91734026655",
-  whatsappHref: "https://wa.me/91734026655",
+  phone: "+91 73402 66551",
+  phoneHref: "tel:+917340266551",
+  whatsappHref: "https://wa.me/917340266551",
   address: {
     company: "AZCURE TELEHEALTH PVT LTD",
     line1: "Office No. 4, 4th Floor, City Vista Tower B",
