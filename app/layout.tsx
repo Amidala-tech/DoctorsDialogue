@@ -91,7 +91,13 @@ const organizationJsonLd = {
     postalCode: "411014",
     addressCountry: "IN",
   },
-  sameAs: [site.youtube, site.facebook],
+  sameAs: [
+    site.youtube,
+    site.facebook,
+    site.instagram,
+    site.linkedin,
+    site.twitter,
+  ],
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "Participation & Collaboration",

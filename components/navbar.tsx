@@ -7,6 +7,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
+import { SocialIcons } from "@/components/social-icons";
 import { Button } from "@/components/ui/button";
 import { navLinks, site } from "@/constants/site";
 import { cn } from "@/lib/utils";
@@ -135,18 +136,14 @@ export function Navbar() {
                   {link.label}
                 </Link>
               ))}
-              <div className="mt-4 flex flex-col gap-3 px-3 pb-2">
+              <div className="mt-4 flex flex-col gap-4 px-3 pb-2">
                 <Button asChild>
                   <a href={site.youtube} target="_blank" rel="noopener noreferrer">
                     <Youtube aria-hidden="true" />
                     Watch on YouTube
                   </a>
                 </Button>
-                <Button asChild variant="outline">
-                  <a href={site.facebook} target="_blank" rel="noopener noreferrer">
-                    Facebook
-                  </a>
-                </Button>
+                <SocialIcons surface="white" />
               </div>
             </div>
           </motion.div>

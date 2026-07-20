@@ -19,7 +19,19 @@ export const site = {
   youtube: "https://youtube.com/@doctorsdialogue1?si=O4sduv_S7mUQ0x2p",
   youtubeVideos: "https://youtube.com/@doctorsdialogue1/videos",
   facebook: "https://www.facebook.com/share/1HUfNR5DJ5/",
+  linkedin: "https://www.linkedin.com/company/doctor-s-dialouge/",
+  instagram:
+    "https://www.instagram.com/doctorsdialogue.in?utm_source=qr&igsh=MXA2dW5ueHU5OW81cg==",
+  twitter: "https://x.com/DoctorsDialogue",
 } as const;
+
+export const socialLinks = [
+  { label: "YouTube", href: site.youtube, icon: "youtube" },
+  { label: "Instagram", href: site.instagram, icon: "instagram" },
+  { label: "Facebook", href: site.facebook, icon: "facebook" },
+  { label: "LinkedIn", href: site.linkedin, icon: "linkedin" },
+  { label: "X", href: site.twitter, icon: "twitter" },
+] as const;
 
 export const navLinks = [
   { label: "Home", href: "/" },

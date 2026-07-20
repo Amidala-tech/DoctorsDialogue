@@ -1,9 +1,10 @@
-import { Facebook, Mail, MapPin, Phone, Youtube } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { SocialIcons } from "@/components/social-icons";
 import { Waveform } from "@/components/waveform";
-import { navLinks, site } from "@/constants/site";
+import { navLinks, site, socialLinks } from "@/constants/site";
 
 const featuredLinks = [
   { label: "Podcast Conversation", href: "/contact?type=podcast" },
@@ -42,26 +43,18 @@ export function Footer() {
                 </Link>
               </li>
             ))}
-            <li>
-              <a
-                href={site.youtube}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="link-accent hover:text-white"
-              >
-                YouTube
-              </a>
-            </li>
-            <li>
-              <a
-                href={site.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="link-accent hover:text-white"
-              >
-                Facebook
-              </a>
-            </li>
+            {socialLinks.map((link) => (
+              <li key={link.label}>
+                <a
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link-accent hover:text-white"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
           </ul>
         </nav>
 
@@ -110,26 +103,7 @@ export function Footer() {
               </span>
             </li>
           </ul>
-          <div className="mt-6 flex items-center gap-3">
-            <a
-              href={site.youtube}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Doctor's Dialogue on YouTube"
-              className="flex size-10 items-center justify-center rounded-xl border border-white/20 text-white/70 transition-colors hover:border-azure hover:text-azure"
-            >
-              <Youtube className="size-4" aria-hidden="true" />
-            </a>
-            <a
-              href={site.facebook}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Doctor's Dialogue on Facebook"
-              className="flex size-10 items-center justify-center rounded-xl border border-white/20 text-white/70 transition-colors hover:border-azure hover:text-azure"
-            >
-              <Facebook className="size-4" aria-hidden="true" />
-            </a>
-          </div>
+          <SocialIcons surface="navy" className="mt-6" />
         </div>
       </div>
 
